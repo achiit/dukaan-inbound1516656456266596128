@@ -1,0 +1,298 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Progress Place</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Hind:wght@400;500;600&display=swap">
+<style>
+/* Layout: single column, left-aligned hero with a marker-highlight headline, then work types, founder, and a tabbed Sign Up / Apply form. */
+:root {
+  --bg: #F5F7F6;
+  --surface: #FFFFFF;
+  --ink: #13222B;
+  --muted: #4C5E67;
+  --line: #D6DEDB;
+  --brand: #0B6B66;
+  --brand-ink: #FFFFFF;
+  --mark: #F2A900;
+  --mark-ink: #1B1400;
+  --soft: #E3F0EE;
+  --danger: #B3261E;
+  --font-display: "Yatra One", "Hind", "Noto Sans Devanagari", Georgia, serif;
+  --font-body: "Hind", "Noto Sans Devanagari", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D161B; --surface: #15222A; --ink: #EAF1EF; --muted: #9DB0B8; --line: #2A3B44;
+    --brand: #35B5AC; --brand-ink: #06201E; --mark: #F2B72A; --mark-ink: #1B1400; --soft: #12302F; --danger: #FF8A80;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D161B; --surface: #15222A; --ink: #EAF1EF; --muted: #9DB0B8; --line: #2A3B44;
+  --brand: #35B5AC; --brand-ink: #06201E; --mark: #F2B72A; --mark-ink: #1B1400; --soft: #12302F; --danger: #FF8A80;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-inline: 16px; padding-block: 0 40px;
+}
+.wrap { max-width: 920px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.25; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-size: 1.35rem; display: flex; align-items: center; gap: 10px; }
+.brand i { width: 14px; height: 14px; background: var(--mark); display: inline-block; transform: rotate(45deg); }
+.callnow { font-weight: 600; text-decoration: none; border: 1.5px solid var(--ink); padding: 8px 14px; border-radius: 6px; font-variant-numeric: tabular-nums; }
+
+/* hero */
+.hero { padding-block: 40px 28px; }
+.hero h1 { font-size: clamp(2rem, 7vw, 3.4rem); max-width: 16ch; }
+.hero h1 mark { background: linear-gradient(transparent 55%, var(--mark) 55%); color: inherit; padding-inline: 2px; }
+.hero p.lead { margin-top: 18px; max-width: 52ch; color: var(--muted); font-size: 1.08rem; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.btn { font: inherit; font-weight: 600; border: 0; border-radius: 6px; padding: 13px 22px; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; }
+.btn.primary { background: var(--brand); color: var(--brand-ink); }
+.btn.alt { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; margin-top: 34px; border-block: 1px solid var(--line); }
+.facts div { padding: 14px 0; min-width: 0; }
+.facts div + div { border-top: 1px solid var(--line); }
+@media (min-width: 700px) { .facts div + div { border-top: 0; border-left: 1px solid var(--line); padding-left: 20px; } .facts div { padding-right: 12px; } }
+.facts small { display: block; color: var(--muted); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+.facts b { font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+section { padding-block: 34px; }
+h2 { font-size: clamp(1.5rem, 4.5vw, 2rem); margin-bottom: 8px; }
+.sub { color: var(--muted); max-width: 56ch; }
+
+/* work types */
+.work { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; margin-top: 22px; }
+.work div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; min-width: 0; }
+.work h3 { font-size: 1.15rem; margin-bottom: 4px; }
+.work p { color: var(--muted); font-size: .96rem; }
+
+/* steps */
+.steps { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li::before { content: counter(s); font-family: var(--font-display); font-size: 1.6rem; color: var(--brand); line-height: 1.2; }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps b { display: block; font-weight: 600; }
+.steps span { color: var(--muted); }
+
+/* founder */
+.founder { display: flex; gap: 18px; align-items: center; background: var(--soft); border-radius: 10px; padding: 22px; flex-wrap: wrap; }
+.mono { width: 64px; height: 64px; border-radius: 50%; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font-family: var(--font-display); font-size: 1.5rem; flex: none; }
+.founder h3 { font-size: 1.3rem; }
+.founder p { color: var(--muted); }
+
+/* forms */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-top: 20px; overflow: hidden; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
+.tab { font: inherit; font-weight: 600; background: transparent; color: var(--muted); border: 0; padding: 15px 8px; cursor: pointer; border-bottom: 3px solid transparent; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--mark); background: var(--soft); }
+form { padding: 22px; display: grid; gap: 16px; max-width: 520px; }
+label { display: grid; gap: 6px; font-weight: 500; }
+label small { font-weight: 400; color: var(--muted); }
+input { font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 6px; padding: 12px 13px; width: 100%; min-width: 0; }
+input[aria-invalid="true"] { border-color: var(--danger); }
+.err { color: var(--danger); font-size: .9rem; min-height: 1.1em; }
+.ready { padding: 22px; display: grid; gap: 14px; max-width: 520px; }
+.ready pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; background: var(--bg); border: 1px dashed var(--line); border-radius: 6px; padding: 14px; }
+.ready .row { display: flex; gap: 10px; flex-wrap: wrap; }
+.fine { color: var(--muted); font-size: .9rem; }
+
+/* contact */
+.contact { display: grid; gap: 4px; }
+.contact .big { font-family: var(--font-display); font-size: clamp(1.6rem, 6vw, 2.2rem); font-variant-numeric: tabular-nums; }
+footer { border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: .9rem; }
+@media (prefers-reduced-motion: no-preference) { .btn { transition: transform .12s; } .btn:hover { transform: translateY(-1px); } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><i></i> Progress Place</div>
+    <a class="callnow" href="tel:+919340424886">9340424886</a>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1><mark>घर बैठे</mark> डिजिटल मार्केटिंग का काम</h1>
+      <p class="lead">Progress Place Digital Marketing Platform लोगों को work from home का मौका देता है। अपना नाम और नंबर भेजिए, हमारी टीम आपसे संपर्क करेगी।</p>
+      <div class="cta">
+        <a class="btn primary" href="#join" data-open="apply">काम के लिए Apply करें</a>
+        <a class="btn alt" href="#join" data-open="signup">Sign Up करें</a>
+      </div>
+      <div class="facts">
+        <div><small>Founder</small><b>Mr. Lakshyaraj Singh</b></div>
+        <div><small>संपर्क</small><b>9340424886</b></div>
+        <div><small>पता</small><b>MS Road, Agra</b></div>
+      </div>
+    </div>
+
+    <section>
+      <h2>कैसा काम मिलता है</h2>
+      <p class="sub">Digital marketing से जुड़ा काम, जो आप अपने फोन या कंप्यूटर से घर पर रहकर कर सकते हैं। काम की पूरी जानकारी संपर्क पर बताई जाती है।</p>
+      <div class="work">
+        <div><h3>Social Media</h3><p>पोस्ट, पेज की देखरेख और ऑनलाइन प्रचार में मदद।</p></div>
+        <div><h3>Lead Generation</h3><p>ग्राहकों की जानकारी जुटाना और उन्हें आगे पहुँचाना।</p></div>
+        <div><h3>Content Support</h3><p>पोस्ट, कैप्शन और छोटे प्रचार संदेश तैयार करने में सहयोग।</p></div>
+        <div><h3>Customer Follow-up</h3><p>फोन या मैसेज पर ग्राहकों से बातचीत और जवाब।</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>जुड़ने का तरीका</h2>
+      <ol class="steps">
+        <li><div><b>फॉर्म भरें</b><span>अपना नाम, मोबाइल नंबर और ईमेल लिखें।</span></div></li>
+        <li><div><b>WhatsApp पर भेजें</b><span>फॉर्म के बाद बटन दबाकर जानकारी हमें भेजें।</span></div></li>
+        <li><div><b>हमारी टीम संपर्क करेगी</b><span>काम और शर्तों की जानकारी फोन पर मिलेगी।</span></div></li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="founder">
+        <div class="mono" aria-hidden="true">LS</div>
+        <div>
+          <p class="fine">Founder</p>
+          <h3>Mr. Lakshyaraj Singh</h3>
+          <p>Progress Place Digital Marketing Platform, Agra</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <h2>जुड़िए हमारे साथ</h2>
+      <p class="sub">नया अकाउंट बनाने के लिए Sign Up चुनें। सीधे काम के लिए आवेदन करना हो तो Apply चुनें।</p>
+
+      <div class="panel">
+        <div class="tabs" role="tablist" aria-label="फॉर्म चुनें">
+          <button class="tab" role="tab" id="tab-signup" aria-controls="p-signup" aria-selected="false" type="button">Sign Up</button>
+          <button class="tab" role="tab" id="tab-apply" aria-controls="p-apply" aria-selected="true" type="button">Apply for Work</button>
+        </div>
+
+        <div id="p-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+          <form id="f-signup" novalidate data-kind="Sign Up">
+            <label for="su-name">आपका नाम<input id="su-name" name="name" autocomplete="name" placeholder="पूरा नाम"><span class="err" data-err="name"></span></label>
+            <label for="su-mobile">मोबाइल नंबर<input id="su-mobile" name="mobile" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10 अंकों का नंबर"><span class="err" data-err="mobile"></span></label>
+            <label for="su-email">ईमेल<input id="su-email" name="email" type="email" autocomplete="email" placeholder="name@example.com"><span class="err" data-err="email"></span></label>
+            <button class="btn primary" type="submit">Sign Up करें</button>
+          </form>
+          <div class="ready" hidden></div>
+        </div>
+
+        <div id="p-apply" role="tabpanel" aria-labelledby="tab-apply">
+          <form id="f-apply" novalidate data-kind="Work From Home Apply">
+            <label for="ap-name">आवेदक का नाम<input id="ap-name" name="name" autocomplete="name" placeholder="पूरा नाम"><span class="err" data-err="name"></span></label>
+            <label for="ap-mobile">मोबाइल नंबर<input id="ap-mobile" name="mobile" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10 अंकों का नंबर"><span class="err" data-err="mobile"></span></label>
+            <label for="ap-email">ईमेल<input id="ap-email" name="email" type="email" autocomplete="email" placeholder="name@example.com"><span class="err" data-err="email"></span></label>
+            <label for="ap-city">शहर <small>(वैकल्पिक)</small><input id="ap-city" name="city" autocomplete="address-level2" placeholder="जैसे Agra"></label>
+            <button class="btn primary" type="submit">Apply करें</button>
+          </form>
+          <div class="ready" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="contact">
+        <p class="fine">सीधे बात करें</p>
+        <p class="big">9340424886</p>
+        <p>Progress Place, MS Road, Agra</p>
+        <div class="cta">
+          <a class="btn primary" href="tel:+919340424886">कॉल करें</a>
+          <button class="btn alt" type="button" id="copy-num">नंबर कॉपी करें</button>
+        </div>
+        <p class="fine" id="copy-msg" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>© Progress Place Digital Marketing Platform · Founder: Mr. Lakshyaraj Singh · MS Road, Agra · 9340424886</footer>
+</div>
+
+<script>
+(function () {
+  var NUMBER = "919340424886";
+  var tabs = { signup: document.getElementById("tab-signup"), apply: document.getElementById("tab-apply") };
+  var panels = { signup: document.getElementById("p-signup"), apply: document.getElementById("p-apply") };
+
+  function openTab(k) {
+    Object.keys(tabs).forEach(function (n) {
+      tabs[n].setAttribute("aria-selected", n === k ? "true" : "false");
+      panels[n].hidden = n !== k;
+    });
+  }
+  Object.keys(tabs).forEach(function (k) { tabs[k].addEventListener("click", function () { openTab(k); }); });
+  document.querySelectorAll("[data-open]").forEach(function (a) {
+    a.addEventListener("click", function () { openTab(a.getAttribute("data-open")); });
+  });
+
+  function copyText(text, done) {
+    function fallback() { done(false); }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    } catch (e) { fallback(); }
+  }
+
+  document.getElementById("copy-num").addEventListener("click", function () {
+    var msg = document.getElementById("copy-msg");
+    copyText("9340424886", function (ok) { msg.textContent = ok ? "नंबर कॉपी हो गया: 9340424886" : "नंबर है: 9340424886 (इसे दबाकर कॉपी करें)"; });
+  });
+
+  function setErr(form, name, text) {
+    var box = form.querySelector('[data-err="' + name + '"]');
+    var input = form.elements[name];
+    if (box) box.textContent = text || "";
+    if (input) { if (text) input.setAttribute("aria-invalid", "true"); else input.removeAttribute("aria-invalid"); }
+  }
+
+  function wire(form) {
+    var ready = form.nextElementSibling;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = form.elements.name.value.trim();
+      var mobile = form.elements.mobile.value.replace(/\D/g, "");
+      var email = form.elements.email.value.trim();
+      var city = form.elements.city ? form.elements.city.value.trim() : "";
+      var bad = false;
+      setErr(form, "name", name.length < 2 ? "कृपया अपना नाम लिखें।" : ""); if (name.length < 2) bad = true;
+      var okMobile = /^[6-9]\d{9}$/.test(mobile);
+      setErr(form, "mobile", okMobile ? "" : "6 से 9 से शुरू होने वाला 10 अंकों का नंबर लिखें।"); if (!okMobile) bad = true;
+      var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      setErr(form, "email", okEmail ? "" : "सही ईमेल लिखें, जैसे name@example.com"); if (!okEmail) bad = true;
+      if (bad) return;
+
+      var lines = ["नमस्ते Progress Place, मैं " + form.getAttribute("data-kind") + " करना चाहता/चाहती हूँ.", "नाम: " + name, "मोबाइल: " + mobile, "ईमेल: " + email];
+      if (city) lines.push("शहर: " + city);
+      var text = lines.join("\n");
+      var link = "https://wa.me/" + NUMBER + "?text=" + encodeURIComponent(text);
+
+      form.hidden = true;
+      ready.hidden = false;
+      ready.innerHTML = "";
+      var h = document.createElement("h3"); h.textContent = "आपकी जानकारी तैयार है"; h.style.fontSize = "1.25rem";
+      var p = document.createElement("p"); p.className = "fine"; p.textContent = "अभी जानकारी भेजी नहीं गई है। नीचे का बटन दबाकर इसे WhatsApp पर हमें भेजें।";
+      var pre = document.createElement("pre"); pre.textContent = text;
+      var row = document.createElement("div"); row.className = "row";
+      var wa = document.createElement("a"); wa.className = "btn primary"; wa.href = link; wa.target = "_blank"; wa.rel = "noopener"; wa.textContent = "WhatsApp पर भेजें";
+      var cp = document.createElement("button"); cp.type = "button"; cp.className = "btn alt"; cp.textContent = "जानकारी कॉपी करें";
+      var back = document.createElement("button"); back.type = "button"; back.className = "btn alt"; back.textContent = "बदलाव करें";
+      var note = document.createElement("p"); note.className = "fine"; note.setAttribute("aria-live", "polite");
+      cp.addEventListener("click", function () { copyText(text, function (ok) { note.textContent = ok ? "कॉपी हो गया।" : "ऊपर लिखी जानकारी को चुनकर कॉपी करें।"; }); });
+      back.addEventListener("click", function () { ready.hidden = true; form.hidden = false; });
+      row.append(wa, cp, back);
+      ready.append(h, p, pre, row, note);
+      wa.focus();
+    });
+  }
+  wire(document.getElementById("f-signup"));
+  wire(document.getElementById("f-apply"));
+})();
+</script>
+
+</body></html>
